@@ -1,0 +1,10 @@
+parameters:
+    brs_security.authentication_handler: BRS\SecurityBundle\Handler\AuthenticationHandler
+    
+services:
+    authentication_handler:
+        class:  %brs_security.authentication_handler%
+        arguments:  [@router]
+        tags:
+            - { name: 'monolog.logger' channel: 'security' }
+    

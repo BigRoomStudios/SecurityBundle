@@ -1,0 +1,38 @@
+{% extends 'BRSAdminBundle:Admin:base.html.twig' %}
+
+{% block js %}
+{% javascripts
+	'bundles/brssecurity/js/login.js'
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+		
+{% block container %}
+<div id="login-form-wrapper">
+	<form id="login-form" class="wrapper" action="{{ path('login_check') }}" method="post">
+	
+		{% if error %}
+	    	<div id="errors" class="jive-msg-failure">{{ error.message }}</div>
+		{% endif %}
+	
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username" />
+	
+	    <input type="password" id="password" name="_password"  placeholder="Password" />
+		
+	    <input type="checkbox" id="remember_me" name="_remember_me" checked />
+    	<label for="remember_me">Keep me logged in.</label>
+	
+	    <input type="submit" name="login" class="button" value="Login" />
+	    
+	</form>
+</div>
+<script language="JavaScript">
+	var login = new Login({
+		id:'login-form',
+		action:'{{ path('login_check') }}',
+	});
+</script>
+
+
+{% endblock %}
