@@ -33,7 +33,7 @@ implements AuthenticationSuccessHandlerInterface,
 		} else {
 			
 			// Otherwise, redirect him to wherever you want
-			$url = $this->router->generate('brs_admin_member_index');
+			$url = $this->router->generate('brs_member_memberadmin_index');
 		}	
 			
 		if ($request->isXmlHttpRequest()) {
