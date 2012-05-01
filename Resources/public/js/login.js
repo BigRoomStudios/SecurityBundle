@@ -46,41 +46,51 @@ var Login = Class.create({
 			function(data){
 				
 				// on success
-		    	if(data.success) {
-		    		
-		    		// generate success msg
-		    		/*$j.msg({
-					    type:'success',
-					    content:"<p><b>Success!</b></p>" // should come from server
+				if(data.success) {
+					
+					// generate success msg
+					/*$j.msg({
+						type:'success',
+						content:"<p><b>Success!</b></p>" // should come from server
 					});*/
-		    		
-		    		// redirect me to the success rout
-		    		//$j.nav.go(data.redirect.route, data.redirect.url);
-		    		
-		    		window.location = data.url;
-		    		
-		    	} else {
-		    		
-		    		//alert($this.container);
-		    		
-		    		$this.container.effect("shake", { times:2 }, 50);
-		    		
-		    		$this.container.find('#password').attr('value', '');
-		    		
-		    		$this.container.find('#password').focus();
-		    		
-		    		// sorry bro, something went wrong
-		    		/*$j.msg({
-					    type:'failure',
-					    sticky:1,
-					    content:"<p><b>Oops!</b> " + data.error + "</p>"
+					
+					// redirect me to the success rout
+					//$j.nav.go(data.redirect.route, data.redirect.url);
+					
+					$this.container.hide();
+						
+					window.location = data.url;	
+					
+				} else {
+					
+					//alert($this.container);
+					
+					$this.container.effect("shake", { times:2 }, 50);
+					
+					$this.container.find('#password').attr('value', '');
+					
+					$this.container.find('#password').focus();
+					
+					// sorry bro, something went wrong
+					/*$j.msg({
+						type:'failure',
+						sticky:1,
+						content:"<p><b>Oops!</b> " + data.error + "</p>"
 					});*/
-		    			
-		    	}
-		    	
+						
+				}
+				
 			}, 'json'); // end post call
 	
 	}, // end post function
 	
 	
 });
+
+// if the login is expired and there was an ajax request, reload the current view to get a propper login redirect
+$(document).ajaxError(function (event, jqXHR) {
+	if (403 === jqXHR.status) {
+		window.location.reload();
+	}
+});
+

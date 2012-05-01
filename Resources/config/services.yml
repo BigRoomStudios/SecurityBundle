@@ -7,4 +7,8 @@ services:
         arguments:  [@router]
         tags:
             - { name: 'monolog.logger' channel: 'security' }
+    ajax_authentication_handler:
+        class: BRS\SecurityBundle\Handler\AjaxAuthenticationHandler
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onAccessDeniedException, priority: 1000 }
     

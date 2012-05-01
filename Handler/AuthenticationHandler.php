@@ -47,7 +47,7 @@ implements AuthenticationSuccessHandlerInterface,
 			
 		} else {
 			
-			// If the user tried to access a protected resource and was forces to login
+			// If the user tried to access a protected resource and was forced to login
 			// redirect him back to that resource
 		   
 			return new RedirectResponse($url);
@@ -56,6 +56,9 @@ implements AuthenticationSuccessHandlerInterface,
 
 	public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
 	{
+			
+		//die('here');
+			
 		$error = $exception->getMessage();
 		
 		if ($request->isXmlHttpRequest()) {
