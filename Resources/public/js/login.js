@@ -12,6 +12,7 @@ var Login = Class.create({
 		this.config = config;
 		this.id = config.id;
 		this.container = $(this.id);
+		this.success_page = config.success_page;
 		
 		// create jive form
 		this.form = new JiveForm({
@@ -58,10 +59,21 @@ var Login = Class.create({
 					//$j.nav.go(data.redirect.route, data.redirect.url);
 					
 					$this.container.hide();
+					
+					if($this.success_page != undefined){
+					
+						window.location = $this.success_page;
 						
-					window.location = data.url;	
+					}else{
+						
+						window.location = data.url;		
+					}
+					
+					
 					
 				} else {
+					
+					//alert('here');
 					
 					//alert($this.container);
 					
