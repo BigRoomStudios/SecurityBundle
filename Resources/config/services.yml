@@ -6,7 +6,7 @@ services:
         class:  %brs_security.authentication_handler%
         arguments:  [@router]
         tags:
-            - { name: 'monolog.logger' channel: 'security' }
+            - { name: 'monolog.logger', channel: 'security' }
     ajax_authentication_handler:
         class: BRS\SecurityBundle\Handler\AjaxAuthenticationHandler
         tags:
