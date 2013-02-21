@@ -16,7 +16,7 @@ var Login = Class.create({
 		
 		// create jive form
 		this.form = new JiveForm({
-			container:config.id,
+			container_id:config.id,
 			action:config.action
 		});
 			
